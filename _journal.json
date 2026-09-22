@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1789986096744,
+      "tag": "0000_create_secure_licenses_and_activations",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789986125929,
+      "tag": "0001_add_atomic_license_activation",
+      "breakpoints": true
+    }
+  ]
+}
