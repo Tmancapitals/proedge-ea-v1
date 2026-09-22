@@ -1,0 +1,39 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.capitalvault.app'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.capitalvault.app'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    def vaultUrl = project.findProperty('CAPITAL_VAULT_URL') ?: System.getenv('CAPITAL_VAULT_URL') ?: 'https://REPLACE_WITH_YOUR_DEPLOYED_CAPITAL_VAULT_URL'
+    buildTypes.all { type ->
+        type.buildConfigField 'String', 'CAPITAL_VAULT_URL', '"' + vaultUrl.replace('\\','\\\\').replace('\"','\\\"') + '"'
+    }
+    buildFeatures { buildConfig true }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+}
