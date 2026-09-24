@@ -27,12 +27,13 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    def vaultUrl = project.findProperty('CAPITAL_VAULT_URL') ?: System.getenv('CAPITAL_VAULT_URL') ?: 'https://REPLACE_WITH_YOUR_DEPLOYED_CAPITAL_VAULT_URL'
+    def vaultUrl = project.findProperty('CAPITAL_VAULT_URL') ?: System.getenv('CAPITAL_VAULT_URL') ?: 'https://capitalvaultwebv1.vercel.app'
     buildTypes.all { type ->
         type.buildConfigField 'String', 'CAPITAL_VAULT_URL', '"' + vaultUrl.replace('\\','\\\\').replace('\"','\\\"') + '"'
     }
     buildFeatures { buildConfig true }
 }
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
 }
